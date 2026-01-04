@@ -1,0 +1,39 @@
+baseURL: "https://yourusername.github.io/"  # Change this to your domain
+languageCode: "en-gb"
+title: "Ben's Blog"
+theme: "minimal"
+
+params:
+  author: "Ben"
+  description: "Cloud, DevOps, and building things that matter"
+  socialLinks:
+    twitter: "https://x.com/yourhandle"
+    linkedin: "https://linkedin.com/in/yourprofile"
+    github: "https://github.com/yourhandle"
+
+menu:
+  main:
+    - name: "Posts"
+      url: "/posts/"
+      weight: 1
+    - name: "About"
+      url: "/about/"
+      weight: 2
+
+markup:
+  highlight:
+    style: "dracula"
+    lineNos: false
+  goldmark:
+    renderer:
+      unsafe: true
+
+outputs:
+  home:
+    - HTML
+    - RSS
+
+pagination:
+  pagerSize: 10
+
+enableRobotsTXT: true

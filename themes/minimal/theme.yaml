@@ -1,0 +1,13 @@
+name: minimal
+license: MIT
+licenselink: https://opensource.org/licenses/MIT
+description: A minimal theme for Hugo
+tags:
+  - minimal
+  - blog
+  - simple
+features:
+  - Responsive
+  - Dark mode
+  - Minimal design
+min_version: "0.100.0"
