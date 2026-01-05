@@ -1,5 +1,6 @@
 ---
 title: "About"
+date: 2026-01-04
 description: "Cloud consultant, DevOps engineer, and builder of things"
 ---
 

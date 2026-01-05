@@ -1,10 +1,10 @@
 baseURL: "https://benkelly.dev/"  # Change this to your domain
 languageCode: "en-gb"
-title: "Ben Kelly | Technology, Cloud, Infrastructure and some occasional Bitcoin"
+title: "Ben Kelly | Cloud & DevOps"
 theme: "minimal"
 
 params:
-  author: "Ben"
+  author: "Ben Kelly"
   description: "Cloud, DevOps, and building things that matter"
   socialLinks:
     X: "https://x.com/BenKelly86"
