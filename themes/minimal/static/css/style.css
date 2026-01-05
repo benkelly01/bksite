@@ -68,6 +68,15 @@ body {
   font-weight: 600;
   color: var(--color-text);
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.site-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
 }
 
 .site-nav a {
