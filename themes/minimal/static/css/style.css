@@ -158,7 +158,7 @@ main {
 
 /* Homepage */
 .home .intro {
-  margin-bottom: var(--spacing-2xl);
+  margin-bottom: var(--spacing-lg);
   padding: var(--spacing-xl) 0;
 }
 
