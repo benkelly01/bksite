@@ -1,6 +1,6 @@
 baseURL: "https://benkelly.dev/"  # Change this to your domain
 languageCode: "en-gb"
-title: "Ben Kelly | Cloud & DevOps"
+title: "Ben Kelly | Cloud Consultant"
 theme: "minimal"
 
 params:
@@ -18,6 +18,9 @@ menu:
     - name: "About"
       url: "/about/"
       weight: 2
+    - name: "Contact"
+      url: "/contact/"
+      weight: 3
 
 markup:
   highlight:
