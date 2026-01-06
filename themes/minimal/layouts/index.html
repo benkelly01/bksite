@@ -9,9 +9,11 @@
     <ul class="post-list">
       {{ range first 5 (where .Site.RegularPages "Section" "posts") }}
       <li class="post-item">
-        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 Jan 2006" }}</time>
-        <a href="{{ .Permalink }}">{{ .Title }}</a>
-        {{ with .Description }}<p class="post-excerpt">{{ . }}</p>{{ end }}
+        <a href="{{ .Permalink }}" class="post-item-link">
+          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 Jan 2006" }}</time>
+          <h3 class="post-item-title">{{ .Title }}</h3>
+          {{ with .Description }}<p class="post-excerpt">{{ . }}</p>{{ end }}
+        </a>
       </li>
       {{ end }}
     </ul>
