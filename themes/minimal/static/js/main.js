@@ -33,19 +33,22 @@
 
   function updateProgress() {
     const articleRect = article.getBoundingClientRect();
-    const articleTop = articleRect.top + window.scrollY;
+    const articleTop = article.offsetTop;
     const articleHeight = article.offsetHeight;
     const windowHeight = window.innerHeight;
     const scrollY = window.scrollY;
 
-    // Calculate how far through the article we've scrolled
-    const start = articleTop - windowHeight;
-    const end = articleTop + articleHeight;
-    const current = scrollY;
+    // Calculate progress: 0% when article starts, 100% when article bottom is visible
+    const scrollStart = articleTop;
+    const scrollEnd = articleTop + articleHeight - windowHeight;
 
     let progress = 0;
-    if (current > start) {
-      progress = Math.min(100, Math.max(0, ((current - start) / (end - start)) * 100));
+    if (scrollY >= scrollStart) {
+      if (scrollY >= scrollEnd) {
+        progress = 100;
+      } else {
+        progress = ((scrollY - scrollStart) / (scrollEnd - scrollStart)) * 100;
+      }
     }
 
     progressBar.style.width = progress + '%';

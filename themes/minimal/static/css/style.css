@@ -122,7 +122,7 @@ body {
 }
 
 .site-title-text {
-  font-size: 1.75rem;
+  font-size: 2.25rem;
   font-weight: 700;
   background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
   -webkit-background-clip: text;
@@ -235,6 +235,10 @@ body {
   background: linear-gradient(90deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
   z-index: 1000;
   transition: width 0.1s ease-out;
+}
+
+.post .post-header {
+  margin-top: var(--spacing-xl);
 }
 
 /* Reading time */
