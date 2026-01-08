@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Aws on Ben Kelly</title>
+    <link>https://benkelly.dev/tags/aws/</link>
+    <description>Recent content in Aws on Ben Kelly</description>
+    <generator>Hugo</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Sat, 03 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://benkelly.dev/tags/aws/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AWS Architecture Patterns: Building Resilient Cloud Infrastructure</title>
+      <link>https://benkelly.dev/posts/aws-architecture-patterns/</link>
+      <pubDate>Sat, 03 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://benkelly.dev/posts/aws-architecture-patterns/</guid>
+      <description>After years of building and consulting on AWS infrastructure, I&amp;rsquo;ve seen the same architectural patterns emerge time and again. These aren&amp;rsquo;t theoretical exercises—they&amp;rsquo;re battle-tested approaches that solve real problems at scale.&#xA;The Three-Tier Architecture: Still Relevant in 2026 Despite the rise of serverless and containerized workloads, the three-tier architecture remains foundational. Here&amp;rsquo;s why it still matters and how to do it right.&#xA;Architecture Overview A modern three-tier setup separates concerns into:</description>
+    </item>
+  </channel>
+</rss>

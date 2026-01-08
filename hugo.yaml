@@ -1,6 +1,6 @@
 baseURL: "https://benkelly.dev/"  # Change this to your domain
 languageCode: "en-gb"
-title: "Ben Kelly | Cloud Consultant"
+title: "Ben Kelly"
 theme: "minimal"
 
 params:

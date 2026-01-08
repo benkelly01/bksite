@@ -10,7 +10,10 @@
       {{ range first 5 (where .Site.RegularPages "Section" "posts") }}
       <li class="post-item">
         <a href="{{ .Permalink }}" class="post-item-link">
-          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 Jan 2006" }}</time>
+          <div class="post-item-meta">
+            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 Jan 2006" }}</time>
+            <span class="reading-time">{{ .ReadingTime }} min read</span>
+          </div>
           <h3 class="post-item-title">{{ .Title }}</h3>
           {{ with .Description }}<p class="post-excerpt">{{ . }}</p>{{ end }}
         </a>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ben Kelly</title>
+    <link>https://benkelly.dev/</link>
+    <description>Recent content on Ben Kelly</description>
+    <generator>Hugo</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Sun, 04 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://benkelly.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>https://benkelly.dev/about/</link>
+      <pubDate>Sun, 04 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://benkelly.dev/about/</guid>
+      <description>I&amp;rsquo;m a cloud consultant with nearly 20 years of experience in cloud computing, DevOps, Infrastructure as Code, networking, and Python development.&#xA;I write about the intersection of technology and business - the practical realities of building systems that actually work, and the lessons learned from doing it wrong first.&#xA;What I do By day, I help organisations navigate the complexities of cloud architecture, automation, and modern infrastructure. I&amp;rsquo;ve worked across AWS, Azure, Kubernetes, and just about every flavour of infrastructure tooling that&amp;rsquo;s existed over the past two decades.</description>
+    </item>
+    <item>
+      <title>Contact</title>
+      <link>https://benkelly.dev/contact/</link>
+      <pubDate>Sun, 04 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://benkelly.dev/contact/</guid>
+      <description>I&amp;rsquo;m always interested in hearing about interesting cloud and DevOps challenges, potential consulting opportunities, or just connecting with like-minded professionals.&#xA;Get in Touch The best way to reach me is via email:&#xA;hello@benkelly.dev&#xA;Connect on Social Find me on X or LinkedIn for more regular updates, thoughts on cloud architecture, and industry insights.&#xA;What I Can Help With Cloud architecture and infrastructure design (AWS, Azure) DevOps transformation and automation Infrastructure as Code (Terraform, CloudFormation) Kubernetes and container orchestration Technical consulting and advisory Whether you&amp;rsquo;re looking to discuss a project, need some advice, or just want to chat about technology—I&amp;rsquo;d love to hear from you.</description>
+    </item>
+    <item>
+      <title>Hello World</title>
+      <link>https://benkelly.dev/posts/hello-world/</link>
+      <pubDate>Sun, 04 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://benkelly.dev/posts/hello-world/</guid>
+      <description>After nearly 20 years in cloud and DevOps, I&amp;rsquo;m finally putting words on the internet. Here&amp;rsquo;s why.&#xA;The case for writing I&amp;rsquo;ve spent most of my career solving problems, building systems, and explaining technical concepts to people who needed to make decisions about them. What I haven&amp;rsquo;t done is write publicly.&#xA;That changes now.&#xA;What to expect I&amp;rsquo;ll be writing about:&#xA;Cloud architecture and DevOps — the practical stuff, not the vendor marketing Building things — lessons from consulting, side projects, and everything in between The business of technology — because technical excellence that doesn&amp;rsquo;t ship is just expensive procrastination The format Longer posts will live here.</description>
+    </item>
+    <item>
+      <title>AWS Architecture Patterns: Building Resilient Cloud Infrastructure</title>
+      <link>https://benkelly.dev/posts/aws-architecture-patterns/</link>
+      <pubDate>Sat, 03 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://benkelly.dev/posts/aws-architecture-patterns/</guid>
+      <description>After years of building and consulting on AWS infrastructure, I&amp;rsquo;ve seen the same architectural patterns emerge time and again. These aren&amp;rsquo;t theoretical exercises—they&amp;rsquo;re battle-tested approaches that solve real problems at scale.&#xA;The Three-Tier Architecture: Still Relevant in 2026 Despite the rise of serverless and containerized workloads, the three-tier architecture remains foundational. Here&amp;rsquo;s why it still matters and how to do it right.&#xA;Architecture Overview A modern three-tier setup separates concerns into:</description>
+    </item>
+  </channel>
+</rss>

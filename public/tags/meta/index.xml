@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Meta on Ben Kelly</title>
+    <link>https://benkelly.dev/tags/meta/</link>
+    <description>Recent content in Meta on Ben Kelly</description>
+    <generator>Hugo</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Sun, 04 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://benkelly.dev/tags/meta/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hello World</title>
+      <link>https://benkelly.dev/posts/hello-world/</link>
+      <pubDate>Sun, 04 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://benkelly.dev/posts/hello-world/</guid>
+      <description>After nearly 20 years in cloud and DevOps, I&amp;rsquo;m finally putting words on the internet. Here&amp;rsquo;s why.&#xA;The case for writing I&amp;rsquo;ve spent most of my career solving problems, building systems, and explaining technical concepts to people who needed to make decisions about them. What I haven&amp;rsquo;t done is write publicly.&#xA;That changes now.&#xA;What to expect I&amp;rsquo;ll be writing about:&#xA;Cloud architecture and DevOps — the practical stuff, not the vendor marketing Building things — lessons from consulting, side projects, and everything in between The business of technology — because technical excellence that doesn&amp;rsquo;t ship is just expensive procrastination The format Longer posts will live here.</description>
+    </item>
+  </channel>
+</rss>
