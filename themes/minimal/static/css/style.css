@@ -281,13 +281,23 @@ main {
   padding: var(--spacing-xl) 0;
 }
 
-.home .tagline {
-  font-size: 1.25rem;
-  line-height: 1.5;
-  font-weight: 400;
-  color: var(--color-text-muted);
-  opacity: 0.7;
-  margin-bottom: 0;
+.home .intro-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  margin-bottom: var(--spacing-md);
+}
+
+.home .intro-link {
+  font-size: 0.9rem;
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.home .intro-link:hover {
+  color: var(--color-accent-hover);
 }
 
 .recent-posts h2 {
