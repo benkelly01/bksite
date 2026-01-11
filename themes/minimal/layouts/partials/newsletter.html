@@ -1,0 +1,14 @@
+<section class="newsletter">
+  <h3>Subscribe to my newsletter</h3>
+  <p>Get notified when I publish new posts. No spam, unsubscribe anytime.</p>
+  <form
+    action="https://buttondown.com/api/emails/embed-subscribe/{{ .Site.Params.buttondownUsername }}"
+    method="post"
+    target="popupwindow"
+    onsubmit="window.open('https://buttondown.com/{{ .Site.Params.buttondownUsername }}', 'popupwindow')"
+    class="newsletter-form"
+  >
+    <input type="email" name="email" placeholder="you@example.com" required>
+    <button type="submit">Subscribe</button>
+  </form>
+</section>

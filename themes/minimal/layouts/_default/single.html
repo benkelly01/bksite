@@ -17,6 +17,7 @@
   <div class="post-content">
     {{ .Content }}
   </div>
+  {{ partial "newsletter.html" . }}
   {{ if or .PrevInSection .NextInSection }}
   <nav class="post-nav">
     {{ with .PrevInSection }}<a href="{{ .Permalink }}" class="prev">&larr; {{ .Title }}</a>{{ end }}

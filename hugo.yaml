@@ -6,6 +6,7 @@ theme: "minimal"
 params:
   author: "Ben Kelly"
   description: "Building secure, scalable cloud solutions that unlock business potential"
+  buttondownUsername: "bdk"
   socialLinks:
     X: "https://x.com/BenKelly86"
     linkedin: "https://linkedin.com/in/ben-kelly-4b2b6a61"

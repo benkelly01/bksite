@@ -1,5 +1,18 @@
 <footer class="site-footer">
   <div class="container">
+    <section class="footer-newsletter">
+      <h4>Stay updated</h4>
+      <form
+        action="https://buttondown.com/api/emails/embed-subscribe/{{ .Site.Params.buttondownUsername }}"
+        method="post"
+        target="popupwindow"
+        onsubmit="window.open('https://buttondown.com/{{ .Site.Params.buttondownUsername }}', 'popupwindow')"
+        class="newsletter-form newsletter-form-inline"
+      >
+        <input type="email" name="email" placeholder="you@example.com" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </section>
     <div class="footer-content">
       <p>&copy; {{ now.Year }} {{ .Site.Params.author }}. All rights reserved.</p>
       <div class="social-links">
