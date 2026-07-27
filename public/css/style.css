@@ -90,7 +90,7 @@ body {
 
 /* Header */
 .site-header {
-  padding: var(--spacing-xl) 0 var(--spacing-xl);
+  padding: var(--spacing-xl) 0 var(--spacing-md);
   background: transparent;
 }
 
