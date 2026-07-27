@@ -90,7 +90,7 @@ body {
 
 /* Header */
 .site-header {
-  padding: var(--spacing-xl) 0 0;
+  padding: var(--spacing-xl) 0 var(--spacing-xl);
   background: transparent;
 }
 
@@ -837,7 +837,7 @@ main {
   }
 
   .site-header {
-    padding: var(--spacing-lg) 0 0;
+    padding: var(--spacing-lg) 0 var(--spacing-lg);
   }
 
   .home h1 {
