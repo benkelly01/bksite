@@ -1,2 +1,107 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cloudfront on Ben Kelly</title><link>https://benkelly.dev/tags/cloudfront/</link><description>Recent content in Cloudfront on Ben Kelly</description><generator>Hugo</generator><language>en-gb</language><lastBuildDate>Fri, 24 Jul 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://benkelly.dev/tags/cloudfront/index.xml" rel="self" type="application/rss+xml"/><item><title>A Private S3 Static Site Behind CloudFront with Terraform</title><link>https://benkelly.dev/posts/private-s3-static-site-cloudfront-terraform/</link><pubDate>Fri, 24 Jul 2026 00:00:00 +0000</pubDate><guid>https://benkelly.dev/posts/private-s3-static-site-cloudfront-terraform/</guid><description>Almost every static site tutorial tells you to flip on S3 static website hosting, mark the bucket public, and point a domain at it. That works, but it leaves your bucket world readable and skips the content delivery network (CDN) entirely. In regulated environments that is usually a non starter.
-The pattern I reach for instead keeps the bucket completely private and puts Amazon CloudFront in front of it, using Origin Access Control (OAC) so that only the distribution can read objects.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Ben Kelly</title><link>https://benkelly.dev/tags/cloudfront/</link><description>Infrastructure engineering, wherever it runs. On-premise, AWS, and everything in between.</description><generator>Hugo</generator><language>en-gb</language><managingEditor>Ben Kelly</managingEditor><webMaster>Ben Kelly</webMaster><lastBuildDate>Fri, 24 Jul 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://benkelly.dev/tags/cloudfront/index.xml" rel="self" type="application/rss+xml"/><item><title>A Private S3 Static Site Behind CloudFront with Terraform</title><link>https://benkelly.dev/posts/private-s3-static-site-cloudfront-terraform/</link><pubDate>Fri, 24 Jul 2026 00:00:00 +0000</pubDate><author>Ben Kelly</author><guid isPermaLink="true">https://benkelly.dev/posts/private-s3-static-site-cloudfront-terraform/</guid><description>How to serve a static site from a locked-down S3 bucket using CloudFront and Origin Access Control, with the whole thing defined in Terraform.</description><content:encoded><![CDATA[<p>Almost every static site tutorial tells you to flip on S3 static website hosting, mark the bucket public, and point a domain at it. That works, but it leaves your bucket world readable and skips the content delivery network (CDN) entirely. In regulated environments that is usually a non starter.</p>
+<p>The pattern I reach for instead keeps the bucket completely private and puts Amazon CloudFront in front of it, using Origin Access Control (OAC) so that only the distribution can read objects. Here is the shape of it.</p>
+<p><img src="https://benkelly.dev/images/s3-cloudfront-architecture.svg" alt="Architecture: a browser talks to CloudFront over TLS, and CloudFront fetches objects from a private S3 bucket using an OAC signed request"></p>
+<p>The bucket has Block Public Access switched on, no website endpoint, and a policy that trusts exactly one thing: the CloudFront distribution below it. Let me walk through the Terraform.</p>
+<h2 id="the-bucket">The bucket</h2>
+<p>Nothing public here. Block Public Access is on, and versioning is enabled so a bad deploy is recoverable.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-hcl" data-lang="hcl"><span style="display:flex;"><span><span style="color:#ff79c6">resource</span> <span style="color:#f1fa8c">&#34;aws_s3_bucket&#34; &#34;site&#34;</span> {
+</span></span><span style="display:flex;"><span>  bucket <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;bk-example-site&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">resource</span> <span style="color:#f1fa8c">&#34;aws_s3_bucket_public_access_block&#34; &#34;site&#34;</span> {
+</span></span><span style="display:flex;"><span>  bucket <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">aws_s3_bucket</span>.<span style="color:#ff79c6">site</span>.<span style="color:#ff79c6">id</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  block_public_acls       <span style="color:#ff79c6">=</span> <span style="color:#8be9fd">true</span>
+</span></span><span style="display:flex;"><span>  block_public_policy     <span style="color:#ff79c6">=</span> <span style="color:#8be9fd">true</span>
+</span></span><span style="display:flex;"><span>  ignore_public_acls      <span style="color:#ff79c6">=</span> <span style="color:#8be9fd">true</span>
+</span></span><span style="display:flex;"><span>  restrict_public_buckets <span style="color:#ff79c6">=</span> <span style="color:#8be9fd">true</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">resource</span> <span style="color:#f1fa8c">&#34;aws_s3_bucket_versioning&#34; &#34;site&#34;</span> {
+</span></span><span style="display:flex;"><span>  bucket <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">aws_s3_bucket</span>.<span style="color:#ff79c6">site</span>.<span style="color:#ff79c6">id</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">versioning_configuration</span> {
+</span></span><span style="display:flex;"><span>    status <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;Enabled&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="origin-access-control">Origin Access Control</h2>
+<p>OAC is the modern replacement for the old Origin Access Identity. It signs requests to the origin with Signature Version 4 (SigV4), which is what lets us drop the public bucket entirely.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-hcl" data-lang="hcl"><span style="display:flex;"><span><span style="color:#ff79c6">resource</span> <span style="color:#f1fa8c">&#34;aws_cloudfront_origin_access_control&#34; &#34;site&#34;</span> {
+</span></span><span style="display:flex;"><span>  name                              <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;bk-example-site-oac&#34;</span>
+</span></span><span style="display:flex;"><span>  origin_access_control_origin_type <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;s3&#34;</span>
+</span></span><span style="display:flex;"><span>  signing_behavior                  <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;always&#34;</span>
+</span></span><span style="display:flex;"><span>  signing_protocol                  <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;sigv4&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="the-distribution">The distribution</h2>
+<p>The distribution points at the bucket&rsquo;s regional domain name, attaches the OAC, and redirects any plain HTTP to HTTPS. I have trimmed the certificate and alias wiring for brevity.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-hcl" data-lang="hcl"><span style="display:flex;"><span><span style="color:#ff79c6">resource</span> <span style="color:#f1fa8c">&#34;aws_cloudfront_distribution&#34; &#34;site&#34;</span> {
+</span></span><span style="display:flex;"><span>  enabled             <span style="color:#ff79c6">=</span> <span style="color:#8be9fd">true</span>
+</span></span><span style="display:flex;"><span>  default_root_object <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;index.html&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">origin</span> {
+</span></span><span style="display:flex;"><span>    domain_name              <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">aws_s3_bucket</span>.<span style="color:#ff79c6">site</span>.<span style="color:#ff79c6">bucket_regional_domain_name</span>
+</span></span><span style="display:flex;"><span>    origin_id                <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;s3-site&#34;</span>
+</span></span><span style="display:flex;"><span>    origin_access_control_id <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">aws_cloudfront_origin_access_control</span>.<span style="color:#ff79c6">site</span>.<span style="color:#ff79c6">id</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">default_cache_behavior</span> {
+</span></span><span style="display:flex;"><span>    target_origin_id       <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;s3-site&#34;</span>
+</span></span><span style="display:flex;"><span>    viewer_protocol_policy <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;redirect-to-https&#34;</span>
+</span></span><span style="display:flex;"><span>    allowed_methods        <span style="color:#ff79c6">=</span> [<span style="color:#f1fa8c">&#34;GET&#34;, &#34;HEAD&#34;</span>]
+</span></span><span style="display:flex;"><span>    cached_methods         <span style="color:#ff79c6">=</span> [<span style="color:#f1fa8c">&#34;GET&#34;, &#34;HEAD&#34;</span>]<span style="color:#6272a4">
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">    # AWS managed &#34;CachingOptimized&#34; policy
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    cache_policy_id <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;658327ea-f89d-4fab-a63d-7e88639e58f6&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">restrictions</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">geo_restriction</span> {
+</span></span><span style="display:flex;"><span>      restriction_type <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;none&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">viewer_certificate</span> {
+</span></span><span style="display:flex;"><span>    cloudfront_default_certificate <span style="color:#ff79c6">=</span> <span style="color:#8be9fd">true</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="the-bucket-policy-is-the-whole-trick">The bucket policy is the whole trick</h2>
+<p>This is the part that actually enforces the private origin. The bucket policy allows <code>s3:GetObject</code>, but only when the caller is the CloudFront service <strong>and</strong> the request comes from this exact distribution. The <code>AWS:SourceArn</code> condition is what stops any other distribution in any other account from reading your objects.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-hcl" data-lang="hcl"><span style="display:flex;"><span><span style="color:#ff79c6">data</span> <span style="color:#f1fa8c">&#34;aws_iam_policy_document&#34; &#34;site&#34;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">statement</span> {
+</span></span><span style="display:flex;"><span>    sid     <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;AllowCloudFrontRead&#34;</span>
+</span></span><span style="display:flex;"><span>    actions <span style="color:#ff79c6">=</span> [<span style="color:#f1fa8c">&#34;s3:GetObject&#34;</span>]
+</span></span><span style="display:flex;"><span>    resources <span style="color:#ff79c6">=</span> [<span style="color:#f1fa8c">&#34;${aws_s3_bucket.site.arn}/*&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">principals</span> {
+</span></span><span style="display:flex;"><span>      type        <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;Service&#34;</span>
+</span></span><span style="display:flex;"><span>      identifiers <span style="color:#ff79c6">=</span> [<span style="color:#f1fa8c">&#34;cloudfront.amazonaws.com&#34;</span>]
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">condition</span> {
+</span></span><span style="display:flex;"><span>      test     <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;StringEquals&#34;</span>
+</span></span><span style="display:flex;"><span>      variable <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;AWS:SourceArn&#34;</span>
+</span></span><span style="display:flex;"><span>      values   <span style="color:#ff79c6">=</span> [<span style="color:#ff79c6">aws_cloudfront_distribution</span>.<span style="color:#ff79c6">site</span>.<span style="color:#ff79c6">arn</span>]
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">resource</span> <span style="color:#f1fa8c">&#34;aws_s3_bucket_policy&#34; &#34;site&#34;</span> {
+</span></span><span style="display:flex;"><span>  bucket <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">aws_s3_bucket</span>.<span style="color:#ff79c6">site</span>.<span style="color:#ff79c6">id</span>
+</span></span><span style="display:flex;"><span>  policy <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">data</span>.<span style="color:#ff79c6">aws_iam_policy_document</span>.<span style="color:#ff79c6">site</span>.<span style="color:#ff79c6">json</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p><strong>Least privilege in one line.</strong> The <code>AWS:SourceArn</code> condition is the difference between &ldquo;CloudFront can read this bucket&rdquo; and &ldquo;<em>this</em> distribution can read this bucket&rdquo;. Always scope to the ARN.</p>
+</blockquote>
+<h2 id="deploying-content">Deploying content</h2>
+<p>Because the bucket is private, you push objects with the normal S3 application programming interface (API) and let CloudFront serve them. After an upload, invalidate the cache so viewers see the new build:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws s3 sync ./public s3://bk-example-site --delete
+</span></span><span style="display:flex;"><span>aws cloudfront create-invalidation <span style="color:#f1fa8c">\
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>  --distribution-id <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$DIST_ID</span><span style="color:#f1fa8c">&#34;</span> <span style="color:#f1fa8c">\
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>  --paths <span style="color:#f1fa8c">&#34;/*&#34;</span>
+</span></span></code></pre></div><h2 id="what-you-end-up-with">What you end up with</h2>
+<ul>
+<li>A bucket with no public access and no website endpoint.</li>
+<li>A CDN that terminates TLS at the edge and caches close to users.</li>
+<li>A single, ARN scoped trust relationship between the two.</li>
+</ul>
+<p>It is a handful of resources, but every one of them is doing a job, and there is no public bucket waiting to be misconfigured. That is the version I am happy to ship in a financial services account.</p>
+]]></content:encoded></item></channel></rss>
