@@ -90,14 +90,46 @@ body {
 
 /* Header */
 .site-header {
-  padding: var(--spacing-lg) 0;
+  padding: var(--spacing-xl) 0 0;
   background: transparent;
 }
 
 .site-header .container {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
+  position: relative;
+}
+
+.site-identity {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+}
+
+.site-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+.site-identity:hover .site-avatar {
+  filter: grayscale(0%);
+}
+
+.site-name {
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  margin: 0;
+  color: var(--color-text-muted);
 }
 
 .site-title {
@@ -177,6 +209,9 @@ body {
 
 /* Theme toggle */
 .theme-toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
   background: none;
   border: none;
   cursor: pointer;
@@ -273,34 +308,7 @@ main {
 .home .intro {
   max-width: 46ch;
   margin: 0 auto var(--spacing-xl);
-  padding-top: var(--spacing-lg);
   text-align: center;
-}
-
-.home .intro-identity {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.6rem;
-  text-decoration: none;
-  margin-bottom: var(--spacing-lg);
-}
-
-.home .intro-avatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.home .intro-name {
-  font-size: 0.8rem;
-  font-weight: 400;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  line-height: 1.2;
-  margin: 0;
-  color: var(--color-text-muted);
 }
 
 .home .intro-bio {
@@ -829,18 +837,7 @@ main {
   }
 
   .site-header {
-    position: relative;
-    padding: var(--spacing-lg) 0;
-  }
-
-  .site-header .container {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--spacing-md);
-  }
-
-  .site-nav {
-    gap: var(--spacing-md);
+    padding: var(--spacing-lg) 0 0;
   }
 
   .home h1 {
