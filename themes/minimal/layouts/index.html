@@ -1,30 +1,42 @@
 {{ define "main" }}
 <section class="home">
-  <div class="intro">
-    <div class="intro-header">
-      <img src="{{ "images/profile.jpeg" | relURL }}" alt="Ben Kelly" class="intro-avatar" width="72" height="72">
-      <h1 class="intro-name">Ben Kelly</h1>
+  <header class="intro">
+    <a href="{{ .Site.BaseURL }}" class="intro-identity">
+      <img src="{{ "images/profile.jpeg" | relURL }}" alt="{{ .Site.Params.author }}" class="intro-avatar" width="50" height="50">
+      <p class="intro-name">{{ .Site.Params.author }}</p>
+    </a>
+
+    <div class="intro-bio">
+      <p>I've spent 20 years in the tech industry, with the last decade focused on Cloud, Infrastructure, and DevOps. Here's what I've been writing about lately.</p>
     </div>
-    <p class="intro-text">I've spent 20 years in the tech industry, with the last decade focused on Cloud, Infrastructure, and DevOps. Here's what I've been writing about lately.</p>
-  </div>
-  
-  <section class="recent-posts">
-    <h2>Recent Posts</h2>
-    <ul class="post-list">
-      {{ range first 5 (where .Site.RegularPages "Section" "posts") }}
-      <li class="post-item">
-        <a href="{{ .Permalink }}" class="post-item-link">
-          <div class="post-item-meta">
-            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 Jan 2006" }}</time>
-            <span class="reading-time">{{ .ReadingTime }} min read</span>
-          </div>
-          <h3 class="post-item-title">{{ .Title }}</h3>
-          {{ with .Description }}<p class="post-excerpt">{{ . }}</p>{{ end }}
-        </a>
-      </li>
-      {{ end }}
-    </ul>
-    <a href="{{ "posts/" | relURL }}" class="view-all">View all posts &rarr;</a>
+
+    <hr class="intro-divider">
+
+    <div class="intro-subscribe">
+      <p>Subscribe to get future posts via email (or grab the <a href="{{ "index.xml" | relURL }}">RSS feed</a>)</p>
+      <form
+        action="https://buttondown.com/api/emails/embed-subscribe/{{ .Site.Params.buttondownUsername }}"
+        method="post"
+        target="popupwindow"
+        onsubmit="window.open('https://buttondown.com/{{ .Site.Params.buttondownUsername }}', 'popupwindow')"
+        class="newsletter-form newsletter-form-inline"
+      >
+        <input type="email" name="email" placeholder="Type your email..." required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </header>
+
+  <section class="post-feed">
+    {{ range first 5 (where .Site.RegularPages "Section" "posts") }}
+    <article class="feed-item">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+      <h2 class="feed-item-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+      {{ with .Description }}<p class="feed-item-excerpt">{{ . }}</p>{{ end }}
+      <a href="{{ .Permalink }}" class="feed-item-more">Read more</a>
+    </article>
+    {{ end }}
+    <a href="{{ "posts/" | relURL }}" class="see-more">See more posts</a>
   </section>
 </section>
 {{ end }}
