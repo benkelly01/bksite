@@ -281,6 +281,15 @@ main {
   padding: var(--spacing-xl) 0;
 }
 
+.home .intro-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: var(--spacing-md);
+  border: 2px solid var(--color-border);
+}
+
 .home .intro-text {
   font-size: 1.1rem;
   line-height: 1.6;
