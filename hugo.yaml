@@ -5,7 +5,7 @@ theme: "minimal"
 
 params:
   author: "Ben Kelly"
-  description: "Building secure, scalable cloud solutions that unlock business potential"
+  description: "Infrastructure engineering, wherever it runs. On-premise, AWS, and everything in between."
   buttondownUsername: "bdk"
   socialLinks:
     X: "https://x.com/BenKelly86"
