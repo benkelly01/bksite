@@ -10,15 +10,9 @@ There is a growing belief that anyone can now build software. Describe what you 
 
 The trouble is not that these tools produce nothing useful. They do. The trouble is what people conclude from the experience. Having produced something that works, they believe they now understand what building software involves. Most do not, and the gap between what they have made and what it takes to run something in production is almost entirely invisible to them. That gap is the subject of this post. It's something I've been thinking about a lot while working with a client recently, where I was reminded again just how difficult and involved it is to build production ready applications and services, even with AI.
 
-## The value has moved
-
-Here is the part that I think most people are missing. A passable version of the functional app, the front of shop, the thing users see and click on, is being commoditised. When anyone can produce one in an afternoon, producing one stops being where the value is. That is not a loss. It is what commoditisation always does, it pushes the value somewhere else.
-
-Where it has gone is underneath. The value now sits in the platform and the infrastructure that let a functional app become a reliable service, and in the experience needed to take a plausible first draft and make it genuinely good. Neither of those was ever cheap. AI has just made the difference obvious by making the first draft nearly free.
-
 ## The thing that builds the thing
 
-Think about building a car. With enough effort you could build one in your garage. It functions, it drives from A to B. That is a genuine achievement and you should be pleased with it.
+An analogy. Think about building a car. With enough effort you could build one in your garage. It functions, it drives from A to B. That is a genuine achievement and you should be pleased with it.
 
 Now build a hundred. Now build a thousand, all identical, all safe, all delivered on time. You are no longer building a car. You are building the thing that builds the thing. You need a factory, supply chains, tooling, quality control, testing rigs, people who know why the line stopped and how to start it again. The factory is the platform. It is what turns "I made one" into "we can make these, consistently and repeatedly". Building one of a thing is usually the easy part, scaling it is not.
 
@@ -56,6 +50,12 @@ Let's say the app is built, it functions, and people are starting to use it. Thi
 
 These are not edge cases. They are the job. Getting a first version working is the start of it, not the end.
 
+## The value has moved
+
+Which brings me to the part I think most people are missing. A passable version of the functional app, the front of shop, the thing users see and click on, is being commoditised. When anyone can produce one in an afternoon, producing one stops being where the value is. That is not a loss. It is what commoditisation always does, it pushes the value somewhere else.
+
+Where it has gone is underneath. The value now sits in the platform and the infrastructure that let a functional app become a reliable service, and in the experience needed to take a plausible first draft and make it genuinely good. Neither of those was ever cheap. AI has just made the difference obvious by making the first draft nearly free.
+
 ## You can service your own car
 
 Most people are capable of changing their own oil. The information is freely available, the tools are cheap, and the job is not complicated. Almost nobody does it.
@@ -65,6 +65,16 @@ That isn't because they are incapable. It is because a professional has the lift
 You can, in principle, vibe code your way towards reliability and scale. People are trying. What they find is that it costs a great deal of time and money to rediscover, one outage at a time, the things an experienced engineer already knows. The cheaper answer is the same as it is with the car: get a professional in. And here is the thing the "AI replaces engineers" crowd has backwards. That professional is now supercharged by the same tools. The person who already understands the factory can use AI to build it faster than ever. The tools do not close the gap between amateur and professional. They widen it.
 
 That professional has the battle scars, the depth and breadth of experience that only comes from having run things in production. Mix that with AI and you can deliver something great. They also know what to watch for when working with AI. It will confidently lead you down strange paths, and if you cannot recognise a trap when you see one, you will walk straight into it. This is where experience saves enormous amounts of time and effort, and it is the one thing the tools cannot generate for you.
+
+## Why build it at all?
+
+There is a second kind of DIY thinking worth calling out. Yes, you could now build your own to do app, project tracker or CRM. The tools make it feel almost free. But why would you?
+
+Building it is the smallest part. You then own the hosting, the backups, the security patches, the logins, the exports, the mobile version, the integrations with the other tools your team already uses, and every bug your colleagues find at the worst possible moment. Meanwhile, for a few quid a month, you could pay a company that has spent thousands of hours building and shaping exactly that product, and has already learnt every one of those lessons, usually the hard way.
+
+You think you can do better than that? Maybe. But be honest about the odds. That company's entire business is this one app. Yours is not. Every hour spent maintaining a home grown CRM is an hour not spent on whatever it is your business actually does.
+
+As before, none of this applies to a proof of concept or an experiment. Build those freely, vibe away! It applies to anything a business will come to rely on, because reliance is exactly where the cost of DIY shows up.
 
 ## What these tools are actually good for
 
