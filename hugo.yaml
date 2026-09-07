@@ -8,7 +8,6 @@ params:
   description: "Infrastructure engineering, wherever it runs. On-premise, AWS, and everything in between."
   buttondownUsername: "bdk"
   socialLinks:
-    X: "https://x.com/BenKelly86"
     linkedin: "https://linkedin.com/in/ben-kelly-4b2b6a61"
 
 menu:

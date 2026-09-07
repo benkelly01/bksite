@@ -14,7 +14,7 @@ The best way to reach me is by email:
 
 ## Elsewhere
 
-Find me on [X](https://x.com/BenKelly86) or [LinkedIn](https://linkedin.com/in/ben-kelly-4b2b6a61).
+Find me on [LinkedIn](https://linkedin.com/in/ben-kelly-4b2b6a61).
 
 ## What I can help with
 
