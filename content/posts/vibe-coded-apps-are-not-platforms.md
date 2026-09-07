@@ -1,7 +1,7 @@
 ---
 title: "A working app is not a platform"
 date: 2026-09-07
-description: "AI has commoditised the first draft of an app. The value has moved to the platform underneath, and to the people who know how to build it. On car factories, and why a shop in a field is not a shopping centre."
+description: "AI has commoditised the first draft of an app. The value has moved to the platform underneath, and to the people who know how to build it. On shops in fields, shopping centres, and the city that makes them possible."
 tags: ["ai", "engineering", "platforms", "opinion"]
 draft: false
 ---
@@ -12,23 +12,15 @@ I don't have a problem with the tools. I use them every day and they are incredi
 
 It also reminded me how much I lean on the people around me when the platform gets complex. Nobody carries all of this in one head, and I am lucky to work alongside some very talented engineers, [John Barber](https://www.linkedin.com/in/john-barber-a6214126/) in particular, who make the hard parts look easier than they are.
 
-## The thing that builds the thing
-
-Think about building a car. With enough effort you could build one in your garage. It functions and it drives from A to B. That is a real achievement and you should be pleased with it.
-
-Now build a hundred or a thousand, all identical, all safe, all delivered on time. You are no longer building a car. You are building the thing that builds the thing. You need a factory, with supply chains, tooling, quality control, testing rigs, and people who know why the line stopped and how to start it again. The factory is the platform. It is what turns "I made one" into "we can make these, consistently and repeatedly". Building one of something is usually the easy part. Scaling it is not.
-
-A vibe coded app is the doors, the colour, the shape of the body. It is the part people see. AI is now good at producing a plausible version of it, but a genuinely good one still takes experience and taste, and that is a craft in its own right. I am not saying this part is easy. What I am saying is that a body without a factory is a one off, and a one off is not a product.
-
 ## A shop in a field
 
-The same idea from a different angle.
-
-A vibe coded app is like a shop you built yourself. You can open the doors and take money, it is a real shop. But it is standing in the middle of a field, and you don't own the field. You do not control the road that leads to it, the power that runs to it, or the terms under which you are allowed to keep trading there. The platform you built on can change its pricing, deprecate the thing you depend on, or disappear.
+A vibe coded app is like a shop you built yourself. You can open the doors and take money, it is a real shop, and that is a genuine achievement you should be pleased with. But it is standing in the middle of a field, and you don't own the field. You do not control the road that leads to it, the power that runs to it, or the terms under which you are allowed to keep trading there. The platform you built on can change its pricing, deprecate the thing you depend on, or disappear.
 
 Even if you did own the field, you would not know what you were going to need or when you were going to need it. Parking, deliveries, what happens when a hundred people turn up at once, what happens when someone tries to break in. You find out about each of these by it going wrong, and by then the shop is full of customers.
 
 A platform is a shopping centre in the middle of a city. The centre is the thing people see and use. The city is everything that makes it possible. Roads, power, water, drainage, police, fire, planning, and the people who show up at night to fix things. None of it is glamorous, and all of it is what allows a business to open its doors on Monday and reasonably expect them to still be open on Friday.
+
+The shopfront is the part people see. AI is now good at producing a plausible one, but a genuinely good one still takes experience and taste, and that is a craft in its own right. I am not saying this part is easy. What I am saying is that a shop with no city around it is a one off, and a one off is not a product. The city is what turns "I opened a shop" into "we can open shops, consistently and repeatedly, and keep them open". Opening one of something is usually the easy part. Doing it again, reliably, is not.
 
 In software terms, the city is the supporting infrastructure. Source control and code review. Consistent and reliable build pipelines. Environments that are separate from each other. Identity and access. Secrets management. Networking. Backups that have actually been restored at least once. Logging, metrics, alerting. Runbooks. On call. Change management. Cost control. Compliance. Someone whose job it is to know how all of this fits together. The non-functionals.
 
@@ -36,11 +28,13 @@ Very little (if any!) of that appears when you ask an AI to build you an app. Th
 
 And even if you do know to ask, knowing the name of a thing is not the same as knowing what a good one looks like. Should the backups be hourly or daily, and for how long? Which alerts matter at 3AM and which are noise? What does changing the network do to the build pipeline? How does this piece connect to the five others it has to work with? Every one of those is a judgement call with trade offs on either side, and every one of them has knock on effects somewhere else in the platform. The AI will happily give you an answer to all of them, and the answer will sound confident. What it can't give you is the taste and experience to know whether it's the right answer for you, which is the glue that actually holds a platform together.
 
+What that glue looks like in practice, and how I go about laying it, is a topic for its own post. This one is about why it matters. The how is coming.
+
 ## Cool, it works. Now what?
 
 Let's say the app is built, it functions, and people are starting to use it. This is where the harder questions start, and the tool is not going to raise any of them for you.
 
-**How does it scale?** The prototype worked for you and three colleagues. What happens at a thousand users? Ten thousand? Where is the database, and what happens when it fills up, or worse, fails entirely?
+**How does it scale?** The prototype worked for you and three colleagues. What happens at a thousand users? Ten thousand? Where is the database, and what happens when it fills up, or worse, fails entirely? What happens when your customers are in three countries and the law in each one says their data stays put? One city has quietly become several, and now the roads between them have to work too.
 
 **How is it secured?** Who can see what? Is the data encrypted, and where are the keys? Has anyone tested it against the sort of input a hostile actor would send rather than the sort a friendly demo would? Is there a way to revoke access when someone leaves?
 
@@ -60,17 +54,17 @@ Where it has gone is underneath, but not quite where you might expect. It is tem
 
 I have seen a lot of heavily AI generated infrastructure now and yes, it works. It also gets in a mess really quickly if you're not careful. Each change makes sense on its own and the whole thing slowly stops making sense, because the tool is answering the question in front of it without knowing about the twenty decisions that were made before it, in other conversations, by other people, on other teams. Someone has to know that, and it needs to be a person. What cannot be rented, or generated, is the judgement, knowing which parts to rent and which to build, what a good one looks like, what the trade offs are, and how the pieces fit together. That, and the experience needed to take a plausible first draft and make it good, is where the value has gone. Neither was ever cheap. AI has just made the difference obvious by making the first draft nearly free.
 
-## You can service your own car
+## You can rewire your own house
 
-Most people are capable of changing their own oil. The information is freely available, the tools are cheap, and the job is not complicated. Almost nobody does it.
+Most people are capable of changing a light fitting or wiring a socket. The information is freely available, the tools are cheap, and the job is not complicated. Almost nobody rewires their own house.
 
-That isn't because they are incapable. It is because a professional has the lift, the torque wrench, the diagnostic reader, the experience to notice that the brake pads are nearly gone while they are under there, and the time to give it their full attention. You have other things to do. The professional isn't valuable because they can do something you can't. They're valuable because they will do it properly, every time, and they will notice the things you would not have known to look for.
+That isn't because they are incapable. It is because a professional has the test equipment, knows the regulations, has the experience to notice that the wiring behind the wall is thirty years old and about to become a problem while they are in there, and the time to give it their full attention. You have other things to do. The professional isn't valuable because they can do something you can't. They're valuable because they will do it properly, every time, and they will notice the things you would not have known to look for.
 
-You can, in principle, vibe code your way towards reliability and scale. People are trying. What they find is that it costs a great deal of time and money to rediscover, one outage at a time, the things an experienced engineer already knows. The cheaper answer is the same as with the car. Get a professional in. And this is what the "AI replaces engineers" crowd has backwards. That professional is now supercharged by the same tools. The person who already understands the factory can use AI to build it faster than ever. My belief, and it is a belief rather than something I can prove, is that the tools do not close the gap between amateur and professional. They widen it. They raise the floor for everyone, but they raise the ceiling most for the people who already know what they are looking at.
+You can, in principle, vibe code your way towards reliability and scale. People are trying. What they find is that it costs a great deal of time and money to rediscover, one outage at a time, the things an experienced engineer already knows. The cheaper answer is the same as with the house. Get a professional in. And this is what the "AI replaces engineers" crowd has backwards. That professional is now supercharged by the same tools. The person who already understands the city can use AI to build it faster than ever. My belief, and it is a belief rather than something I can prove, is that the tools do not close the gap between amateur and professional. They widen it. They raise the floor for everyone, but they raise the ceiling most for the people who already know what they are looking at.
 
 That professional has the battle scars, the depth and breadth of experience that only comes from having run things in production. Mix that with AI and you can deliver something great. They also know what to watch for when working with AI. It will confidently lead you down strange paths, and if you cannot recognise a trap when you see one, you will walk straight into it. This is where experience saves enormous amounts of time and effort, and it is the one thing the tools cannot generate for you.
 
-The other thing experience buys you is someone who will tell you no. Not every problem needs a platform, and a professional worth paying is one who will say so, point you at the thing you should buy instead, and save you from building the factory you were never going to need. I will write more about that another time, because it matters more than most people realise.
+The other thing experience buys you is someone who will tell you no. Not every problem needs a platform, and a professional worth paying is one who will say so, point you at the thing you should buy instead, and save you from building the city you were never going to need. I will write more about that another time, because it matters more than most people realise.
 
 ## Why build it at all?
 
@@ -94,8 +88,10 @@ The problem is only ever confusing one thing for the other. A proof of concept i
 
 ## Wrapping up
 
-AI code generation will not put engineers out of work. I, for one, am busier than ever! It has, however, made the first draft much cheaper and left everything after it mostly where it was. When the first draft is close to free, the value moves to everything after it. The factory, the city, the platform, and the people who know how to build them.
+AI code generation will not put engineers out of work. I, for one, am busier than ever! It has, however, made the first draft much cheaper and left everything after it mostly where it was. When the first draft is close to free, the value moves to everything after it. The city, the platform, and the people who know how to build them.
 
 I am aware that an infrastructure engineer writing "hire an infrastructure engineer" is not exactly a neutral witness, so weigh that as you see fit. But the argument does not rest on a job title. It rests on what happens at 3AM or when the auditors turn up.
 
-If you have built something with these tools and it works, that is genuinely good. Just be honest about what you have. A car in a garage. A shop in a field. Before you promise to build a thousand of them, find someone who knows how to build a factory. That is no small task, and it never was.
+This post is the why. In future posts I will get into the how, how I actually work with these tools day to day, and how I go about building the city underneath an application, piece by piece, so that the shop stays open.
+
+If you have built something with these tools and it works, that is genuinely good. Just be honest about what you have. A shop in a field. Before you promise to open a hundred more, find the people who know how to build the city around them. It takes a village to build a city, and that is no small task. It never was.
