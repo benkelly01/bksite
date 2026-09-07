@@ -94,4 +94,4 @@ I am aware that an infrastructure engineer writing "hire an infrastructure engin
 
 This post is the why. In future posts I will get into the how, how I actually work with these tools day to day, and how I go about building the city underneath an application, piece by piece, so that the shop stays open.
 
-If you have built something with these tools and it works, that is genuinely good. Just be honest about what you have. A shop in a field. Before you promise to open a hundred more, find the people who know how to build the city around them. It takes a village to build a city, and that is no small task. It never was.
+If you have built something with these tools and it works, that is genuinely good. Just be honest about what you have. A shop in a field. Before you promise to open a hundred more, find the people who know how to build the city around them. It takes a village to build a city. It always has.
