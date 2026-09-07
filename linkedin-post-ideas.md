@@ -24,3 +24,11 @@ Notes:
 - Each post needs its own closing line.
 
 Status: ideas only, not yet drafted.
+
+# Future article idea
+
+"Components are one thing, gluing them into a coherent platform is another."
+The complexity of distributed systems and architecture. Each component is a
+solved problem; the interactions between them are not. Needs a concrete
+example (timeouts, partial failure, schema disagreement on deploy).
+Parked on 2026-09-06, not covered in the vibe coding article.
