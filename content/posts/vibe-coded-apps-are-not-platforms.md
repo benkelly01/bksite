@@ -1,5 +1,5 @@
 ---
-title: "A Working App Is Not a Platform"
+title: "A working app is not a platform"
 date: 2026-09-07
 description: "AI has commoditised the first draft of an app. The value has moved to the platform underneath, and to the people who know how to build it. On car factories, and why a shop in a field is not a shopping centre."
 tags: ["ai", "engineering", "platforms", "opinion"]
