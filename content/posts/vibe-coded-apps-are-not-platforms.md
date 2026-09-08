@@ -14,17 +14,17 @@ It also reminded me how much I lean on the people around me when the platform ge
 
 ## A shop in a field
 
-A vibe coded app is like a shop you built yourself. You can open the doors and take money, it is a real shop, and that is a genuine achievement you should be pleased with. But it is standing in the middle of a field, and you don't own the field. You do not control the road that leads to it, the power that runs to it, or the terms under which you are allowed to keep trading there. The platform you built on can change its pricing, deprecate the thing you depend on, or disappear.
+A vibe coded app is like a shop you built yourself. You can open the doors and take money, it is a real shop, and that is a genuine achievement you should be pleased with. But it is standing in the middle of a field, and the field belongs to someone else. You do not control the road that leads to it, the power that runs to it, or the terms under which you are allowed to keep trading there. The platform you built on can change its pricing next quarter, deprecate the thing you depend on, or disappear altogether.
 
-Even if you did own the field, you would not know what you were going to need or when you were going to need it. Parking, deliveries, what happens when a hundred people turn up at once, what happens when someone tries to break in. You find out about each of these by it going wrong, and by then the shop is full of customers.
+Even if you did own the field, there is nothing around the shop. No parking, no delivery access, no lighting, nothing to stop someone breaking in at night, and nothing to cope with a hundred people turning up at once. You are going to need all of it, and you have no way of knowing which bit you will need first. You find out by it going wrong, and by then the shop is full of customers.
 
-A platform is a shopping centre in the middle of a city. The centre is the thing people see and use. The city is everything that makes it possible. Roads, power, water, drainage, police, fire, planning, and the people who show up at night to fix things. None of it is glamorous, and all of it is what allows a business to open its doors on Monday and reasonably expect them to still be open on Friday.
+A platform is a shopping centre in the middle of a city. The centre is the thing people see and use. The city is everything that makes it possible. Roads, power, water, drainage, police, fire, planning, and the people who show up at night to fix things. Nobody notices any of it until something goes wrong, which is the point. It's what lets a business open its doors on Monday and reasonably expect them to still be open on Friday.
 
 The shopfront is the part people see. AI is now good at producing a plausible one, but a genuinely good one still takes experience and taste, and that is a craft in its own right. I am not saying this part is easy. What I am saying is that a shop with no city around it is a one off, and a one off is not a product. The city is what turns "I opened a shop" into "we can open shops, consistently and repeatedly, and keep them open". It also comes with paperwork. Nobody opens a shop in a city by just putting up a building. There is planning approval, insurance, a lease, contracts with suppliers, and a support agreement with someone who will answer the phone when the power goes off. All of that is friction, and all of it exists for the day something goes wrong, so that there is someone responsible for fixing it and a way to pay for it. Creating one of something is usually the easy part. Doing it again, reliably and at scale, is not.
 
 In software terms, the city is the supporting infrastructure. Source control and code review. Consistent and reliable build pipelines. Environments that are separate from each other. Identity and access. Secrets management. Networking. Backups that have actually been restored at least once. Logging, metrics, alerting. Runbooks. On call. Change management. Cost control. Compliance. Someone whose job it is to know how all of this fits together. The non-functionals.
 
-Very little (if any!) of that appears when you ask an AI to build you an app. That isn't because the AI is bad at it. It's because you didn't ask, and you didn't ask because you didn't know it was a thing you could ask for.
+Very little (if any!) of that appears when you ask an AI to build you an app. That isn't because the AI is bad at it. You didn't ask for it, and you didn't ask because you didn't know it was a thing you could ask for.
 
 And even if you do know to ask, knowing the name of a thing is not the same as knowing what a good one looks like. Should the backups be hourly or daily, and for how long? Which alerts matter at 3AM and which are noise? What does changing the network do to the build pipeline? How does this piece connect to the five others it has to work with? Every one of those is a judgement call with trade offs on either side, and every one of them has knock on effects somewhere else in the platform. The AI will happily give you an answer to all of them, and the answer will sound confident. What it can't give you is the taste and experience to know whether it's the right answer for you, which is the glue that actually holds a platform together.
 
@@ -44,7 +44,7 @@ Let's say the app is built, it functions, and people are starting to use it. Thi
 
 **What happens at 3AM?** It will break. Everything does. When it does, who gets alerted, how do they know what went wrong, and how do they fix it without making it worse? If nobody is on the other end of that alert, the answer is that the shop stays shut until someone notices.
 
-None of these are edge cases. This is the job, and getting a first version working is the start of it rather than the end.
+None of these are edge cases. This is the job, and getting a first version working is the start of it rather than the end. Most of the work is the city, not the shop.
 
 ## The value has moved to experience and judgement
 
