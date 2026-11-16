@@ -1,5 +1,5 @@
 ---
-title: "A working app is not a platform"
+title: "Vibe-coded apps are not platforms"
 date: 2026-09-07
 description: "AI has commoditised the first draft of an app. The value has moved to the platform underneath, and to the people who know how to build it. On shops in fields, shopping centres, and the city that makes them possible."
 tags: ["ai", "engineering", "platforms", "opinion"]
