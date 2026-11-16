@@ -58,3 +58,12 @@
   window.addEventListener('resize', updateProgress, { passive: true });
   updateProgress();
 })();
+
+// Newsletter forms: open the Buttondown confirmation popup on submit
+(function() {
+  document.querySelectorAll('form[data-popup]').forEach(function(form) {
+    form.addEventListener('submit', function() {
+      window.open(form.dataset.popup, 'popupwindow');
+    });
+  });
+})();

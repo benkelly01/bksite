@@ -1,4 +1,5 @@
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://bdk.goatcounter.com; connect-src 'self' https://bdk.goatcounter.com; form-action https://buttondown.com; base-uri 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
 <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
@@ -26,17 +27,9 @@
 <meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
 {{ with .Params.image }}<meta name="twitter:image" content="{{ . | absURL }}">{{ end }}
 
-<!-- Theme toggle script (load early to prevent flash) -->
-<script>
-  (function() {
-    const stored = localStorage.getItem('theme');
-    if (stored) {
-      document.documentElement.setAttribute('data-theme', stored);
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-    }
-  })();
-</script>
+<!-- Theme init (load early to prevent flash) -->
+<script src="{{ "js/theme-init.js" | relURL }}"></script>
 
 <!-- GoatCounter Analytics -->
-<script data-goatcounter="https://bdk.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script data-goatcounter="https://bdk.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js"
+  crossorigin="anonymous" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ"></script>

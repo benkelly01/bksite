@@ -13,7 +13,7 @@
         action="https://buttondown.com/api/emails/embed-subscribe/{{ .Site.Params.buttondownUsername }}"
         method="post"
         target="popupwindow"
-        onsubmit="window.open('https://buttondown.com/{{ .Site.Params.buttondownUsername }}', 'popupwindow')"
+        data-popup="https://buttondown.com/{{ .Site.Params.buttondownUsername }}"
         class="newsletter-form newsletter-form-inline"
       >
         <input type="email" name="email" placeholder="Type your email..." required>
