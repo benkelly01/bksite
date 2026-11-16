@@ -74,7 +74,7 @@ There is a second kind of DIY thinking worth calling out. Yes, you could now bui
 
 Building it is the smallest part. You then own the hosting, the backups, the security patches, the logins, the exports, the mobile version, the integrations with the other tools your team already uses, and every bug your colleagues find at the worst possible moment. Meanwhile, for a few quid a month, you could pay a company that has spent thousands of hours building and shaping exactly that product, and has already learnt every one of those lessons, usually the hard way.
 
-Yes, that is also a field you do not own. The difference is who is on the hook when it breaks. With a vibe coded app it is you, at 3AM, with no idea where to start. With a paid service it is a company with a contract, a status page and an on call rota, whose business depends on fixing it. You aren't avoiding dependence, you're choosing to depend on someone whose job it is.
+Yes, that is also a field you do not own. The difference is who is on the hook when it breaks. With a vibe-coded app it is you, at 3AM, with no idea where to start. With a paid service it is a company with a contract, a status page and an on call rota, whose business depends on fixing it. You aren't avoiding dependence, you're choosing to depend on someone whose job it is.
 
 You think you can do better than that? Maybe. But be honest about the odds. That company's entire business is this one app. Yours is not. Every hour spent maintaining a home grown CRM is an hour not spent on whatever it is your business actually does.
 
